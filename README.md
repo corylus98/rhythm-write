@@ -24,6 +24,11 @@
 #### Nice-to-have Features
 - User Profile & Data Management – Secure storage for past journal entries and user preferences.
 - Sync with Spotify – Sync with users’ Spotify accounts to suggest music that they usually like.
+#### Features Updated(4/11)
+- Journal Input and stored previous journals
+- Prompts of journal suggestion/tags input (mood, time, playlist)
+- Playlist on the side or bottome with a timer(API Spotify)
+- Virtual Friend (feedback)
 
 ### Roadmaps
 | Phase       | Milestone                          | Due Date  |
@@ -36,3 +41,7 @@
 |             | Complete interactive chatbot     | 5/16     |
 | **Testing**   | Test and fix                    | 5/27     |
 | **Launch**    | Go live!                        | 5/30     |
+
+### Contact Information
+- Jazmyn Zhang, minjia27@uw.edu, Jaazmyn@github
+- Hazel Chen, hazelycc@uw.edu， corylus98@github
