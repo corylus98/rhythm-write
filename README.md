@@ -1,79 +1,47 @@
-# Rhythm Write
+# rhythm-write
+### Project Objectives
+- Develop a web-based journaling application that enhances the writing experience through music and AI-driven feedback.
+- Encourage users to engage in regular journaling by providing structured prompts and a time-matched music playlist.
+- Offer an interactive AI-powered virtual "friend" to provide supportive feedback on journal entries.
+- Create a seamless and intuitive user experience that fosters reflection, relaxation, and self-expression.
 
-A mindful journaling application that combines writing with music to enhance focus and creativity.
+### Users
+#### Target Users
+- People looking for a relaxing way to write down their thoughts.
+- People who enjoy music when writing.
+- People who seek support and feedback.
+#### User Needs
+- A writing environment with personalized music.
+- The ability to receive friendly feedback.
+- A visually appealing and easy-to-use interface.
 
-## Features
+### Features
+#### Planned Features
+- Journal Input – Users can type to journal in the web application.
+- Guided Prompts System – Predefined and customizable prompts to help users start journaling.
+- Personalized Music Playlist Integration – A feature that suggests music based on user-selected journaling time and mood.
+- AI-Powered Chatbot – An interactive assistant providing supportive feedback on journal entries.
+#### Nice-to-have Features
+- User Profile & Data Management – Secure storage for past journal entries and user preferences.
+- Sync with Spotify – Sync with users’ Spotify accounts to suggest music that they usually like.
+#### Features Updated(4/11)
+- Journal Input and stored previous journals
+- Prompts of journal suggestion/tags input (mood, time, playlist)
+- Playlist on the side or bottome with a timer(API Spotify)
+- Virtual Friend (feedback)
 
-- 📝 Journal writing with mood tracking
-- 🎵 Mood-based music suggestions
-- ⏱️ Focus timer integration
-- 🎯 Goal setting and tracking
-- 🌤️ Weather and mood correlation
+### Roadmaps
+| Phase       | Milestone                          | Due Date  |
+|------------|-----------------------------------|----------|
+| **Planning**  | Complete requirements document  | 4/7      |
+| **Design**    | Complete system design          | 4/18     |
+|             | Complete interface design       | 5/2      |
+| **Development** | Complete journal input         | 4/25     |
+|             | Complete music playlist suggestion | 5/9      |
+|             | Complete interactive chatbot     | 5/16     |
+| **Testing**   | Test and fix                    | 5/27     |
+| **Launch**    | Go live!                        | 5/30     |
 
-## Setup Instructions
-
-### Prerequisites
-
-- Node.js (v14.0.0 or higher)
-- npm (v6.0.0 or higher)
-
-### Installation
-
-1. Clone the repository:
-```bash
-git clone [repository-url]
-cd rhythm-write
-```
-
-2. Install dependencies:
-```bash
-npm install
-```
-
-3. Start the development server:
-```bash
-npm start
-```
-
-4. Open [http://localhost:3000](http://localhost:3000) in your browser
-
-## Project Structure
-
-```
-rhythm-write/
-├── public/
-│   └── index.html
-├── src/
-│   ├── components/
-│   │   └── Navbar.tsx
-│   │   └── JournalPage.tsx
-│   │   └── useSpotifyPlayer.ts
-│   │   └── utils/
-│   │   └── App.tsx
-│   │   └── index.tsx
-│   ├── package.json
-│   ├── tsconfig.json
-│   └── README.md
-```
-
-## Development Progress
-
-- [x] Project structure setup
-- [x] Basic component architecture
-- [x] Journal page implementation
-- [x] Mood tracking interface
-- [x] Music integration design
-- [ ] User authentication
-- [ ] Data persistence
-- [ ] Settings page
-
-## Technologies Used
-
-- React
-- TypeScript
-- Material-UI
-- Spotify Web Playback SDK
-
-## Contributing
-
-This is a student project for the Spring 2024 semester.
+### Contact Information
+- Jazmyn Zhang, minjia27@uw.edu, Jaazmyn@github
+- Hazel Chen, hazelycc@uw.edu， corylus98@github

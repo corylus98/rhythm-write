@@ -99,10 +99,11 @@ const MoodSvgIcon = styled('svg')({
 
 const EditableTitle = styled(TextField)({
   '& .MuiInputBase-input': {
-    fontSize: '1.5rem',
-    fontWeight: 'bold',
     fontFamily: '"Instrument Serif", serif',
+    fontSize: '2.5rem',
+    fontWeight: 400,
     color: '#333',
+    padding: '0',
   },
   '& .MuiInput-underline:before': {
     borderBottom: 'none',
@@ -114,6 +115,14 @@ const EditableTitle = styled(TextField)({
     borderBottom: 'none',
   },
 }) as typeof TextField;
+
+const SectionTitle = styled(Typography)({
+  fontFamily: '"Instrument Serif", serif',
+  fontSize: '1.125rem',
+  fontWeight: 400,
+  color: '#333',
+  marginBottom: '1.5rem',
+});
 
 const GratefulInput = styled(TextField)({
   '& .MuiInputBase-input': {
@@ -300,15 +309,7 @@ const JournalPage: React.FC = () => {
       <Navbar />
       <Box sx={{ display: 'flex', minHeight: '100vh' }}>
         <LeftColumn>
-          <Typography variant="h6" sx={{ 
-            mb: 2,
-            fontFamily: '"Instrument Serif", serif',
-            fontSize: '1.25rem',
-            color: '#333'
-          }}>
-            Mood Checkin
-          </Typography>
-
+          <SectionTitle>Mood Checkin</SectionTitle>
           <MoodContainer>
             {moods.map((mood) => (
               <MoodIcon
@@ -323,14 +324,7 @@ const JournalPage: React.FC = () => {
           </MoodContainer>
 
           <Box sx={{ mb: 3 }}>
-            <Typography variant="subtitle2" sx={{ 
-              mb: 1.5,
-              fontFamily: '"Instrument Serif", serif',
-              fontSize: '1rem',
-              color: '#333'
-            }}>
-              Today, I'm Grateful for
-            </Typography>
+            <SectionTitle>Today, I'm Grateful for</SectionTitle>
             <GratefulInput
               multiline
               rows={2}
@@ -341,14 +335,7 @@ const JournalPage: React.FC = () => {
           </Box>
 
           <Box sx={{ mb: 3 }}>
-            <Typography variant="subtitle2" sx={{ 
-              mb: 1.5,
-              fontFamily: '"Instrument Serif", serif',
-              fontSize: '1rem',
-              color: '#333'
-            }}>
-              Journal Time Goal
-            </Typography>
+            <SectionTitle>Journal Time Goal</SectionTitle>
             <Stack spacing={1}>
               <Stack direction="row" spacing={0.75}>
                 {[15, 30, 45].map((minutes) => (
@@ -397,7 +384,8 @@ const JournalPage: React.FC = () => {
               padding: '12px',
               borderRadius: '8px',
               fontFamily: '"Instrument Serif", serif',
-              fontSize: '16px',
+              fontSize: '1rem',
+              fontStyle: 'italic',
               '&:hover': {
                 backgroundColor: entry.mood ? '#EAEAEA' : '#F5F5F5',
               },
@@ -440,9 +428,11 @@ const JournalPage: React.FC = () => {
             sx={{
               fontFamily: '"Instrument Serif", serif',
               fontSize: '0.875rem',
-              mb: 2,
+              fontWeight: 400,
               color: '#666',
-              letterSpacing: '1px'
+              letterSpacing: '1px',
+              textTransform: 'uppercase',
+              mb: 2
             }}
           >
             TODAY
@@ -451,7 +441,8 @@ const JournalPage: React.FC = () => {
             variant="standard"
             value={journalTitle}
             onChange={(e) => setJournalTitle(e.target.value)}
-            placeholder="Enter title..."
+            placeholder="Start Journaling"
+            fullWidth
             sx={{ mb: 6 }}
           />
           <TextField
