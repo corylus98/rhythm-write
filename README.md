@@ -61,6 +61,7 @@ rhythm-write/
 - [x] Project structure setup
 - [x] Basic component architecture
 - [x] Journal page implementation
+- [ ] 
 - [x] Mood tracking interface
 - [x] Music integration design
 - [ ] User authentication
@@ -75,5 +76,7 @@ rhythm-write/
 - Spotify Web Playback SDK
 
 ## Contributing
+- Jazmyn Zhang, minjia27@uw.edu, Jaazmyn@github
+- Hazel Chen, hazelycc@uw.edu， corylus98@github
 
 This is a student project for the Spring 2024 semester.
