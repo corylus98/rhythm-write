@@ -75,7 +75,6 @@ src/
   App.tsx
   index.tsx
 ```
-
 ---
 
 ## Setup & Development
@@ -104,6 +103,26 @@ src/
 | **Testing**   | Test and fix                    | 5/27     |
 | **Launch**    | Go live!                        | 5/30     |
 
-## Contact Information
+
+## Development Progress
+
+- [x] Project structure setup
+- [x] Basic component architecture
+- [x] Journal page implementation
+- [x] Mood tracking interface
+- [x] Music integration design
+- [ ] User authentication
+- [ ] Data persistence
+- [ ] Settings page
+
+## Technologies Used
+
+- React
+- TypeScript
+- Material-UI
+- Spotify Web Playback SDK
+
+## Contributing
 - Jazmyn Zhang, minjia27@uw.edu, Jaazmyn@github
-- Hazel Chen, hazelycc@uw.edu, corylus98@github
+- Hazel Chen, hazelycc@uw.edu， corylus98@github
+
