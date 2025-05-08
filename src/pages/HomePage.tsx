@@ -13,7 +13,7 @@ const HomePage: React.FC = () => (
     <HowItWorksSection />
     <QuoteSection />
     <FooterSection />
-  </Box>
-);
+      </Box>
+  );
 
 export default HomePage; 

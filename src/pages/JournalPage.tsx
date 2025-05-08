@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Box } from '@mui/material';
-import TopBar from '../components/Journal/TopBar';
+import NavBar from '../components/Home/NavBar';
 import MoodCheckinStep from '../components/Journal/MoodCheckinStep';
 import GratitudeStep from '../components/Journal/GratitudeStep';
 import TimeGoalStep from '../components/Journal/TimeGoalStep';
@@ -43,29 +43,29 @@ const moodPlaylists = {
   ],
 } as const;
 
-const JournalPage: React.FC = () => {
+const PrecheckPage: React.FC = () => {
   const [step, setStep] = useState(0);
-  const [mood, setMood] = useState<MoodType | null>(null);
+  const [mood, setMood] = useState<MoodType | "">("");
   const [gratitude, setGratitude] = useState('');
-  const [timeGoal, setTimeGoal] = useState<number | ''>('');
+  const [timeGoal, setTimeGoal] = useState<number | "">("");
   const navigate = useNavigate();
 
   // 生成playlist，时长与timeGoal一致，内容由mood决定
   const getPlaylist = () => {
     if (!mood || !timeGoal) return [];
-    const tracks = moodPlaylists[mood] || [];
+    const tracks = moodPlaylists[mood as MoodType] || [];
     let total = 0;
     let result = [];
     let i = 0;
-    while (total < timeGoal && tracks.length > 0) {
+    while (total < Number(timeGoal) && tracks.length > 0) {
       const track = tracks[i % tracks.length];
-      if (total + track.duration > timeGoal) break;
+      if (total + track.duration > Number(timeGoal)) break;
       result.push(track);
       total += track.duration;
       i++;
     }
     // 最后一首补足时长
-    if (total < timeGoal && tracks.length > 0) {
+    if (total < Number(timeGoal) && tracks.length > 0) {
       const last = { ...tracks[i % tracks.length], duration: Number(timeGoal) - total };
       result.push(last);
     }
@@ -73,8 +73,9 @@ const JournalPage: React.FC = () => {
   };
 
   // 步骤组件
+  const handleMoodChange = (mood: string) => setMood(mood as MoodType);
   const steps = [
-    <MoodCheckinStep key="mood" value={mood} onChange={(m) => setMood(m as MoodType)} onNext={() => mood && setStep(1)} />, 
+    <MoodCheckinStep key="mood" value={mood} onChange={handleMoodChange} onNext={() => mood && setStep(1)} />, 
     <GratitudeStep key="gratitude" value={gratitude} onChange={setGratitude} onNext={() => setStep(2)} />, 
     <TimeGoalStep key="time" value={timeGoal} onChange={setTimeGoal} onNext={() => timeGoal && setStep(3)} />,
     // Playlist Step
@@ -91,12 +92,12 @@ const JournalPage: React.FC = () => {
         <Box sx={{ fontFamily: 'Instrument Sans, sans-serif', fontSize: 16, color: '#B7AFA3', mt: 2, textAlign: 'right' }}>
           Total: {timeGoal} min
         </Box>
-      </Box>
+          </Box>
       <Box>
         <Box
           component="button"
           onClick={() => navigate('/journal/write')}
-          sx={{
+            sx={{
             fontFamily: 'Instrument Sans, sans-serif',
             fontWeight: 500,
             fontSize: '1.2rem',
@@ -107,11 +108,11 @@ const JournalPage: React.FC = () => {
             background: '#FFFDFB',
             color: '#341A00',
             border: '1.5px solid #341A00',
-            textTransform: 'none',
+              textTransform: 'none',
             transition: 'background 0.3s',
             mb: 2,
             cursor: 'pointer',
-            '&:hover': {
+              '&:hover': {
               background: '#F5E9DD',
               color: '#341A00',
               border: '1.5px solid #341A00',
@@ -126,32 +127,56 @@ const JournalPage: React.FC = () => {
   ];
 
   return (
-    <Box sx={{ minHeight: '100vh', bgcolor: '#FFFDFB', m: 0, p: 0, boxSizing: 'border-box', overflow: 'hidden', position: 'relative' }}>
-      <TopBar />
-      <Box sx={{ width: '100vw', height: '1px', bgcolor: '#341A00' }} />
+    <Box sx={{ minHeight: '100vh', bgcolor: '#FFFDFB', m: 0, p: 0, boxSizing: 'border-box', overflow: 'hidden' }}>
+      <NavBar />
       {/* 左竖线 */}
-      <Box sx={{ position: 'fixed', top: 0, left: 0, width: '1px', height: '100vh', bgcolor: '#341A00', zIndex: 10 }} />
+      <Box sx={{
+        position: 'fixed',
+        top: 0,
+        left: 240,
+        width: '1px',
+        height: '100vh',
+        bgcolor: '#341A00',
+        zIndex: 1100,
+        display: { xs: 'none', md: 'block' },
+      }} />
       {/* 右竖线 */}
-      <Box sx={{ position: 'fixed', top: 0, right: 0, width: '1px', height: '100vh', bgcolor: '#341A00', zIndex: 10 }} />
-      <Box sx={{display: 'flex', justifyContent: 'center', height: 'calc(100vh - 65px)' }}>
-        <Box sx={{
-          width: 800,
-          position: 'relative',
-          height: '100%',
+      <Box sx={{
+        position: 'fixed',
+        top: 0,
+        right: 240,
+        width: '1px',
+        height: '100vh',
+        bgcolor: '#341A00',
+        zIndex: 1100,
+        display: { xs: 'none', md: 'block' },
+      }} />
+      {/* 内容区外层，宽度为两竖线之间 */}
+      <Box
+                sx={{ 
+          width: { xs: '100vw', md: 'calc(100vw - 480px)' },
+          minWidth: 0,
+          mx: 'auto',
           display: 'flex',
           justifyContent: 'center',
-          alignItems: 'flex-start',
-          mx: 'auto',
-          boxSizing: 'border-box',
-        }}>
-          {/* 内容区 */}
-          <Box sx={{ width: 420, py: 8, position: 'relative', zIndex: 1 }}>
-            {steps[step]}
-          </Box>
+          height: 'calc(100vh - 65px)',
+        }}
+      >
+        <Box
+            sx={{
+            width: 420,
+            py: 8,
+            position: 'relative',
+            zIndex: 1,
+            mx: 'auto',
+            mt: { xs: 10, md: 12 },
+          }}
+        >
+          {steps[step]}
         </Box>
       </Box>
     </Box>
   );
 };
 
-export default JournalPage; 
+export default PrecheckPage; 

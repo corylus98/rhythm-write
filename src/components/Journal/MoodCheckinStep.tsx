@@ -41,14 +41,6 @@ interface MoodCheckinStepProps {
   onNext: () => void;
 }
 
-const moodTypeToValue = {
-  'very-happy': 'very-happy',
-  'happy': 'happy',
-  'neutral': 'neutral',
-  'sad': 'sad',
-  'very-sad': 'very-sad',
-};
-
 const MoodCheckinStep: React.FC<MoodCheckinStepProps> = ({ value, onChange, onNext }) => (
   <Box sx={{ textAlign: 'center' }}>
     <Typography

@@ -1,14 +1,21 @@
 import React from 'react';
-import { Box, Typography, Button, TextField } from '@mui/material';
+import { Box, Typography, Button, TextField, IconButton } from '@mui/material';
+import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 
 interface GratitudeStepProps {
   value: string;
   onChange: (val: string) => void;
   onNext: () => void;
+  onBack?: () => void;
 }
 
-const GratitudeStep: React.FC<GratitudeStepProps> = ({ value, onChange, onNext }) => (
-  <Box sx={{ textAlign: 'center' }}>
+const GratitudeStep: React.FC<GratitudeStepProps> = ({ value, onChange, onNext, onBack }) => (
+  <Box sx={{ textAlign: 'center', position: 'relative' }}>
+    {onBack && (
+      <IconButton onClick={onBack} sx={{ position: 'absolute', left: 0, top: 0 }}>
+        <ArrowBackIcon sx={{ color: '#341A00' }} />
+      </IconButton>
+    )}
     <Typography sx={{ fontFamily: 'Instrument Serif, serif', fontSize: 32, color: '#341A00', mb: 4, fontStyle: 'italic' }}>
       Today, I'm grateful for
     </Typography>
@@ -30,10 +37,10 @@ const GratitudeStep: React.FC<GratitudeStepProps> = ({ value, onChange, onNext }
           color: '#341A00',
           borderRadius: 2,
           background: '#FFFDFB',
-          border: '1.5px solid #341A00',
         },
         '& .MuiOutlinedInput-notchedOutline': {
           borderColor: '#341A00',
+          borderWidth: '2px',
         },
       }}
     />

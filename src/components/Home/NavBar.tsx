@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { Box, Typography, IconButton, Menu, MenuItem } from '@mui/material';
+import { useNavigate } from 'react-router-dom';
 
 const menuItems = [
   'LOG IN',
@@ -7,17 +8,28 @@ const menuItems = [
   'CALENDER',
 ];
 
-const NavBar: React.FC = () => {
+interface NavBarProps {
+  rightContent?: React.ReactNode;
+}
+
+const NavBar: React.FC<NavBarProps> = ({ rightContent }) => {
   const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
   const open = Boolean(anchorEl);
+  const navigate = useNavigate();
 
   return (
     <Box sx={{ width: '100vw', bgcolor: '#FFFDFB', position: 'fixed', top: 0, left: 0, zIndex: 1200 }}>
       <Box sx={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', px: '48px', pt: '12px', pb: '12px', maxWidth: 1400, mx: 'auto' }}>
-        <Typography sx={{ fontFamily: 'Instrument Serif, serif', fontWeight: 400, fontSize: '32px', color: '#341A00' }}>
-          RhythmWrite
-        </Typography>
-        <Box>
+        <Box
+          onClick={() => navigate('/')}
+          sx={{ cursor: 'pointer', userSelect: 'none' }}
+        >
+          <Typography sx={{ fontFamily: 'Instrument Serif, serif', fontWeight: 400, fontSize: '32px', color: '#341A00' }}>
+            RhythmWrite
+          </Typography>
+        </Box>
+        <Box sx={{ display: 'flex', alignItems: 'center', gap: 2 }}>
+          {rightContent}
           <IconButton
             onClick={e => setAnchorEl(e.currentTarget)}
             sx={{ width: 32, height: 32, display: 'flex', alignItems: 'center', justifyContent: 'center', p: 0 }}
