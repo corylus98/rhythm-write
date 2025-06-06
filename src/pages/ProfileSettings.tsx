@@ -6,9 +6,8 @@ import {
   Container,
   Alert,
 } from '@mui/material';
-
-const SPOTIFY_CLIENT_ID = process.env.REACT_APP_SPOTIFY_CLIENT_ID;
-const REDIRECT_URI = process.env.REACT_APP_REDIRECT_URI || window.location.origin + '/profile';
+import { buildAuthUrl } from '../config/spotify';
+import NavBar from '../components/Home/NavBar';
 
 const ProfileSettings: React.FC = () => {
   const [isSpotifyConnected, setIsSpotifyConnected] = useState(false);
@@ -31,16 +30,13 @@ const ProfileSettings: React.FC = () => {
     }
   }, []);
 
-  const handleSpotifyConnect = () => {
-    if (!SPOTIFY_CLIENT_ID) {
-      setError('Spotify client ID is not configured');
-      return;
-    }
-
-    const scope = 'streaming user-read-email user-read-private user-modify-playback-state';
-    const authUrl = `https://accounts.spotify.com/authorize?client_id=${SPOTIFY_CLIENT_ID}&response_type=token&redirect_uri=${encodeURIComponent(REDIRECT_URI)}&scope=${encodeURIComponent(scope)}`;
-    
+  const handleSpotifyConnect = async () => {
+    try {
+      const authUrl = await buildAuthUrl();
     window.location.href = authUrl;
+    } catch (error) {
+      console.error('Error building auth URL:', error);
+    }
   };
 
   const handleSpotifyDisconnect = () => {
@@ -49,13 +45,37 @@ const ProfileSettings: React.FC = () => {
   };
 
   return (
-    <Container maxWidth="md">
+    <Box sx={{ minHeight: '100vh', bgcolor: '#FFFDFB', m: 0, p: 0, boxSizing: 'border-box', overflow: 'hidden' }}>
+      <NavBar />
+      {/* Left vertical line */}
+      <Box sx={{
+        position: 'fixed',
+        top: 0,
+        left: 240,
+        width: '1px',
+        height: '100vh',
+        bgcolor: '#341A00',
+        zIndex: 1100,
+        display: { xs: 'none', md: 'block' },
+      }} />
+      {/* Right vertical line */}
+      <Box sx={{
+        position: 'fixed',
+        top: 0,
+        right: 240,
+        width: '1px',
+        height: '100vh',
+        bgcolor: '#341A00',
+        zIndex: 1100,
+        display: { xs: 'none', md: 'block' },
+      }} />
+      <Container maxWidth="md" sx={{ pt: { xs: 12, md: 16 } }}>
       <Box
         sx={{
           display: 'flex',
           flexDirection: 'column',
           alignItems: 'center',
-          mt: { xs: 8, md: 12 }
+            mt: 0
         }}
       >
         <Typography
@@ -69,7 +89,7 @@ const ProfileSettings: React.FC = () => {
             fontWeight: 400
           }}
         >
-          Settings
+            SETTINGS
         </Typography>
 
         <Box
@@ -149,6 +169,7 @@ const ProfileSettings: React.FC = () => {
         </Box>
       </Box>
     </Container>
+    </Box>
   );
 };
 

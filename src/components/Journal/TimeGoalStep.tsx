@@ -19,33 +19,35 @@ const TimeGoalStep: React.FC<TimeGoalStepProps> = ({ value, onChange, onNext, on
     <Typography sx={{ fontFamily: 'Instrument Serif, serif', fontSize: 32, color: '#341A00', mb: 4, fontStyle: 'italic' }}>
       My journal time goal today
     </Typography>
-    <TextField
-      variant="outlined"
-      placeholder="e.g. 10 minutes"
-      fullWidth
-      type="number"
-      value={value}
-      onChange={e => {
-        const val = e.target.value;
-        onChange(val === '' ? '' : Number(val));
-      }}
-      sx={{
-        mb: 4,
-        bgcolor: '#FFFDFB',
-        borderRadius: 2,
-        '& .MuiOutlinedInput-root': {
-          fontFamily: 'Instrument Sans, sans-serif',
-          fontSize: 18,
-          color: '#341A00',
+    <Box sx={{ display: 'flex', alignItems: 'center', justifyContent: 'center', mb: 4 }}>
+      <TextField
+        variant="outlined"
+        placeholder="e.g. 10 minutes"
+        fullWidth
+        type="number"
+        value={value}
+        onChange={e => {
+          const val = e.target.value;
+          onChange(val === '' ? '' : Number(val));
+        }}
+        sx={{
+          bgcolor: '#FFFDFB',
           borderRadius: 2,
-          background: '#FFFDFB',
-        },
-        '& .MuiOutlinedInput-notchedOutline': {
-          borderColor: '#341A00',
-          borderWidth: '2px',
-        },
-      }}
-    />
+          '& .MuiOutlinedInput-root': {
+            fontFamily: 'Instrument Sans, sans-serif',
+            fontSize: 18,
+            color: '#341A00',
+            borderRadius: 2,
+            background: '#FFFDFB',
+          },
+          '& .MuiOutlinedInput-notchedOutline': {
+            borderColor: '#341A00',
+            borderWidth: '2px',
+          },
+        }}
+      />
+      <Typography sx={{ ml: 2, fontFamily: 'Instrument Sans, sans-serif', fontSize: 20, color: '#341A00' }}>min</Typography>
+    </Box>
     <Button
       variant="outlined"
       onClick={onNext}

@@ -2,6 +2,12 @@ import React from 'react';
 import { Box, Typography, Button } from '@mui/material';
 import { useNavigate } from 'react-router-dom';
 import vinylImg from '../../assets/vinyl.png';
+import { keyframes } from '@emotion/react';
+
+const spin = keyframes`
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+`;
 
 const HeroSection: React.FC = () => {
   const navigate = useNavigate();
@@ -60,15 +66,49 @@ const HeroSection: React.FC = () => {
         {/* Right: Vinyl image */}
         <Box sx={{ flex: 1, display: 'flex', justifyContent: 'flex-end', alignItems: 'center', mt: { xs: 6, md: 0 }, overflow: 'visible' }}>
           <Box
+            sx={{
+              position: 'relative',
+              display: 'inline-block',
+            }}
+          >
+            {/* Shadow */}
+            <Box
+              sx={{
+                position: 'absolute',
+                left: '50%',
+                bottom: -18,
+                transform: 'translateX(-50%)',
+                width: { xs: 120, md: 200, lg: 260 },
+                height: { xs: 24, md: 36, lg: 44 },
+                bgcolor: 'rgba(52,26,0,0.13)',
+                borderRadius: '50%',
+                filter: 'blur(6px)',
+                zIndex: 0,
+              }}
+            />
+          <Box
             component="img"
             src={vinylImg}
             alt="vinyl"
-            sx={{ width: { xs: 260, md: 420, lg: 520 }, height: 'auto', display: 'block', mr: { md: '-8vw' } }}
+              sx={{
+                width: { xs: 260, md: 420, lg: 520 },
+                height: 'auto',
+                display: 'block',
+                mr: { md: '-8vw' },
+                animation: `${spin} 8s linear infinite`,
+                willChange: 'transform',
+                zIndex: 1,
+                transition: 'animation 0.2s',
+                '&:hover': {
+                  animation: `${spin} 2.5s linear infinite`,
+                },
+              }}
           />
+          </Box>
         </Box>
       </Box>
-      {/* 全宽分割线 */}
-      <Box sx={{ width: '100vw', position: 'relative', left: '50%', right: '50%', ml: '-50vw', mr: '-50vw', height: '1px', bgcolor: '#341A00' }} />
+      {/* Full-width divider */}
+      {/* <Box sx={{ width: '100vw', position: 'relative', left: '50%', right: '50%', ml: '-50vw', mr: '-50vw', height: '1px', bgcolor: '#341A00' }} /> */}
     </>
   );
 };

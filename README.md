@@ -1,84 +1,67 @@
-# rhythm-write
-### Project Objectives
-- Develop a web-based journaling application that enhances the writing experience through music and AI-driven feedback.
-- Encourage users to engage in regular journaling by providing structured prompts and a time-matched music playlist.
-- Offer an interactive AI-powered virtual "friend" to provide supportive feedback on journal entries.
-- Create a seamless and intuitive user experience that fosters reflection, relaxation, and self-expression.
+# RhythmWrite
 
-### Users
-#### Target Users
-- People looking for a relaxing way to write down their thoughts.
-- People who enjoy music when writing.
-- People who seek support and feedback.
-#### User Needs
-- A writing environment with personalized music.
-- The ability to receive friendly feedback.
-- A visually appealing and easy-to-use interface.
+> **Live Demo:** [https://rhythmwrite.vercel.app](https://rhythmwrite.vercel.app)
+
+A minimalistic, music-driven journaling web app that helps you reflect, relax, and reconnect—with mood-matched playlists, AI feedback, and a clean, modern interface.
 
 ---
 
-### Features
-#### Planned Features
-- Journal Input – Users can type to journal in the web application.
-- Guided Prompts System – Predefined and customizable prompts to help users start journaling.
-- Personalized Music Playlist Integration – A feature that suggests music based on user-selected 
-journaling time and mood.
-- AI-Powered Chatbot – An interactive assistant providing supportive feedback on journal entries.
-#### Nice-to-have Features
-- User Profile & Data Management – Secure storage for past journal entries and user preferences.
-- Sync with Spotify – Sync with users’ Spotify accounts to suggest music that they usually like.
-#### Features Updated(4/11)
-- Journal Input and stored previous journals
-- Prompts of journal suggestion/tags input (mood, time, playlist)
-- Playlist on the side or bottome with a timer(API Spotify)
-- Virtual Friend (feedback)
+## ✨ Features
 
-#### Features & Workflow (2025-05-02)
-- **Unified NavBar**: All pages use a single, consistent NavBar for navigation and top border.
-- **Vertical Lines**: Two fixed 1px vertical lines (#341A00), 240px from each edge, frame the main content (do not scroll with content).
-- **Responsive, Pixel-Perfect Layout**: Uses MUI's sx prop, CSS clamp, and fixed/absolute positioning for robust, Figma-matching layouts.
-- **Precheck Flow**: Mood Check-in → Gratitude → Time Goal → Playlist, all with controlled components and state managed in the parent.
-- **Playlist Generation**: Playlist matches user's time goal and mood.
-- **Writing Page**: Left-aligned content, large editable title, plus icon, and minimalist textarea. NavBar shows timer and play/pause.
-- **SVG Mood Icons**: Minimalist, Kinfolk-style SVG mood icons for mood selection.
-- **Clean Codebase**: Removed unused files/components (e.g., TopBar), fixed all linter warnings, and clarified file structure.
+- **Minimalist Journal Writing**: Clean, distraction-free writing page with a large, elegant timer and a fixed, minimal music player bar.
+- **Mood-Based Playlists**: Check in with your mood (icon-only), gratitude, and time goal. RhythmWrite generates a Spotify playlist to match your mood and writing duration.
+- **Spotify Integration**: Log in with Spotify for personalized playlists and in-app music playback (Spotify Premium required for playback control).
+- **Timer-Linked Music**: Timer and music playback are linked—start writing, and your playlist starts; pause writing, and music pauses.
+- **AI Feedback**: (Planned) Receive supportive, friendly feedback on your journal entries from an AI-powered virtual friend.
+- **Journal History**: Entries are saved with mood, gratitude, and (optionally) a title. View your history grouped by year/month, with mood icons and gratitude.
+- **Accessibility**: All icons and buttons have tooltips and accessible labels.
+- **Modern, Consistent UI**: Unified NavBar, vertical lines, and consistent typography (Instrument Serif & Instrument Sans). User avatar is a circle with initials.
+- **No Image Uploads**: Focused, text-only journaling experience.
+- **English-Only**: All code, comments, and UI are in English.
 
 ---
 
-## Main Pages
-- **HomePage**: Landing page with project intro and navigation.
-- **PrecheckPage** (`/journal`): Step-based workflow for mood, gratitude, time, and playlist.
-- **JournalWritePage** (`/journal/write`): Main writing interface with timer, music, and prompts.
-- **ArchivedPage**: View previous journal entries.
-- **ProfileSettings**: User profile and settings.
+## 🖥️ Main Pages
 
-## Components
+- **Home**: Project intro and navigation.
+- **Journal Flow** (`/journal`): Step-based check-in (mood, gratitude, time, playlist).
+- **Journal Writing** (`/journal/write`): Main writing interface with timer and music.
+- **History** (`/history`): View and read past journal entries.
+- **(Planned) Profile/Settings**: User profile and preferences.
+
+---
+
+## 🧩 Components
+
 - **NavBar**: Unified navigation and top border.
-- **Journal/GratitudeStep, MoodCheckinStep, TimeGoalStep**: Precheck workflow steps.
-- **Home/HeroSection, QuoteSection, HowItWorksSection, FooterSection**: Home page sections.
-
-## Assets
-- Minimalist SVG and PNG icons for moods, music, and UI.
+- **MoodCheckinStep, GratitudeStep, TimeGoalStep, PlaylistStep**: Pre-journaling workflow.
+- **MusicPlayer**: Fixed, minimal bottom bar on the writing page.
+- **Journal History**: Grouped by year/month, with mood icons and gratitude.
+- **Home Sections**: Hero, Quote, How It Works, Footer (with musical note icon).
 
 ---
 
-## Project Structure
+## 🗂️ Project Structure
+
 ```
 src/
   components/
     Home/
     Journal/
+    JournalWrite/
   pages/
   assets/
   hooks/
   utils/
+  contexts/
   App.tsx
   index.tsx
 ```
 
 ---
 
-## Setup & Development
+## 🚀 Getting Started
+
 1. **Install dependencies:**
    ```bash
    npm install
@@ -92,18 +75,36 @@ src/
    npm run build
    ```
 
-### Roadmaps
-| Phase       | Milestone                          | Due Date  |
-|------------|-----------------------------------|----------|
-| **Planning**  | Complete requirements document  | 4/7      |
-| **Design**    | Complete system design          | 4/18     |
-|             | Complete interface design       | 5/2      |
-| **Development** | Complete journal input         | 4/25     |
-|             | Complete music playlist suggestion | 5/9      |
-|             | Complete interactive chatbot     | 5/16     |
-| **Testing**   | Test and fix                    | 5/27     |
-| **Launch**    | Go live!                        | 5/30     |
+### Spotify Integration
 
-## Contact Information
-- Jazmyn Zhang, minjia27@uw.edu, Jaazmyn@github
-- Hazel Chen, hazelycc@uw.edu, corylus98@github
+- **Spotify Premium is required** for in-app music playback control (Spotify API limitation).
+- Log in with your Spotify account for the best experience.
+- If you don't have Premium, you can still get playlist recommendations and play music manually in Spotify.
+
+---
+
+## 📝 Development Notes
+
+- All code, comments, and documentation are in English.
+- The codebase is clean, modern, and ready for demo or deployment.
+- Accessibility and UI/UX best practices are followed throughout.
+- Obsolete and non-English files have been removed.
+
+---
+
+## 👥 Credits
+
+- **Jazmyn Zhang** — minjia27@uw.edu, [Jaazmyn](https://github.com/Jaazmyn)
+- **Hazel Chen** — hazelycc@uw.edu, [corylus98](https://github.com/corylus98)
+
+---
+
+## 📅 Roadmap
+
+| Phase         | Milestone                        | Due Date  |
+|---------------|----------------------------------|-----------|
+| Planning      | Complete requirements document   | 4/7       |
+| Design        | Complete system/interface design | 4/18, 5/2 |
+| Development   | Journal input, playlist, chatbot | 4/25–5/16 |
+| Testing       | Test and fix                     | 5/27      |
+| Launch        | Go live!                         | 5/30      |
