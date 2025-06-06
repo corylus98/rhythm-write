@@ -1,9 +1,17 @@
 # RhythmWrite
 
-> **Live Demo:** [https://rhythmwrite.vercel.app](https://rhythmwrite.vercel.app)
+### Users
+#### Target Users
+- People looking for a relaxing way to write down their thoughts.
+- People who enjoy music when writing.
+- People who seek support and feedback.
+#### User Needs
+- A writing environment with personalized music.
+- The ability to receive friendly feedback.
+- A visually appealing and easy-to-use interface.
+> **Live Demo:** [https://rhythmwrite.space](https://rhythmwrite.space)
 
 A minimalistic, music-driven journaling web app that helps you reflect, relax, and reconnect—with mood-matched playlists, AI feedback, and a clean, modern interface.
-
 ---
 
 ## ✨ Features
@@ -16,8 +24,6 @@ A minimalistic, music-driven journaling web app that helps you reflect, relax, a
 - **Journal History**: Entries are saved with mood, gratitude, and (optionally) a title. View your history grouped by year/month, with mood icons and gratitude.
 - **Accessibility**: All icons and buttons have tooltips and accessible labels.
 - **Modern, Consistent UI**: Unified NavBar, vertical lines, and consistent typography (Instrument Serif & Instrument Sans). User avatar is a circle with initials.
-- **No Image Uploads**: Focused, text-only journaling experience.
-- **English-Only**: All code, comments, and UI are in English.
 
 ---
 
@@ -85,7 +91,6 @@ src/
 
 ## 📝 Development Notes
 
-- All code, comments, and documentation are in English.
 - The codebase is clean, modern, and ready for demo or deployment.
 - Accessibility and UI/UX best practices are followed throughout.
 - Obsolete and non-English files have been removed.
